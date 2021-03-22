@@ -34,22 +34,6 @@
       <ComponentRef Id="ApplicationShortcutDesktop"/>
     </Feature>
 
-    <Feature Id="VCRedist86" Title="Visual C++ 2015 CRT X86" AllowAdvertise="no" Display="hidden" Level="1">
-      <MergeRef Id="VCRedist86"/>
-    </Feature>
-
-    <Feature Id="VCRedist64" Title="Visual C++ 2015 CRT X64" AllowAdvertise="no" Display="hidden" Level="1">
-      <MergeRef Id="VCRedist64"/>
-    </Feature>
-
-    <Feature Id="MFCRedist86" Title="Visual C++ 2015 MFC X86" AllowAdvertise="no" Display="hidden" Level="1">
-      <MergeRef Id="MFCRedist86"/>
-    </Feature>
-
-    <Feature Id="MFCRedist64" Title="Visual C++ 2015 MFC X64" AllowAdvertise="no" Display="hidden" Level="1">
-      <MergeRef Id="MFCRedist64"/>
-    </Feature>
-
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFiles64Folder" Name="PFiles">
         <Directory Id="INSTALLFOLDER" Name="Honyaku no Hojo">
@@ -73,13 +57,6 @@
         <RemoveFile Id="DictionaryData" On="uninstall" Name="Dictionary.dat"/>
       </Component>
     </ComponentGroup>
-
-    <DirectoryRef Id="TARGETDIR">
-      <Merge Id="VCRedist86" SourceFile="c:\Program Files (x86)\Common Files\Merge Modules\Microsoft_VC140_CRT_x86.msm" DiskId="1" Language="0"/>
-      <Merge Id="VCRedist64" SourceFile="c:\Program Files (x86)\Common Files\Merge Modules\Microsoft_VC140_CRT_x64.msm" DiskId="1" Language="0"/>
-      <Merge Id="MFCRedist86" SourceFile="c:\Program Files (x86)\Common Files\Merge Modules\Microsoft_VC140_MFC_x86.msm" DiskId="1" Language="0"/>
-      <Merge Id="MFCRedist64" SourceFile="c:\Program Files (x86)\Common Files\Merge Modules\Microsoft_VC140_MFC_x64.msm" DiskId="1" Language="0"/>
-    </DirectoryRef>    
 
     <DirectoryRef Id="DictionaryFolder">
       <Component Id="Dictionary" Guid="C310E4D6-63EF-466D-A806-1ABB461CF003">
