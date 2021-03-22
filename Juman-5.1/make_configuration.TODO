@@ -1,0 +1,11 @@
+Much editing of the autoconf and make configuration is required before this UTF8 version of JUMAN 5.1 can be redistributed on all platforms.
+
+The only cause for these changes is the requirement for the ICU library by the juman client (i.e. the executable produced in the juman/juman directory). When the C source code is compiled gcc needs to be passed the ICU "include" directory and when the objects are joined the linker needs to be passed the location of the ICU "lib".
+
+If an official "libicu" rpm package has been installed then the libs will be at /usr/lib/libicu*.The official "libicu-devel" package provides the headers in /usr/include/, e.g. /usr/include/unicode/ucnv.h.
+
+The two libraries used are icuuc and icuin (N.B. icuin seems to be named icui18n in linux). Presently the full path names of these libraries are added to the "juman_LDADD" var in juman/Makefile.in, but possibly the "-l<libname>" syntax could be used instead? In cygwin the libraries are named cyg*.dll, but in linux they are "lib*.so". 
+
+The autoconf files need to adjusted so that the include dir, the lib dir, and the lib file names are dynamically set. The "configure" script produced by autoconf tool should assume the default dirs mentioned above but should also accept overrides, e.g. "./configure --icuincludedir=/home/john/icu/include/".
+
+It would be good if autoconf had macros that produced "configure" and "Makefile" scripts that confirmed if the ICU library can be detected or not.

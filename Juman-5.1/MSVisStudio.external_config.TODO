@@ -1,0 +1,62 @@
+When building with a MS Visual Studio solution instead of GNU make some steps are missed. 
+
+#1 "JUMAN.connect.c" has to be processed into "JUMAN.connect" (before any
+#2 The "jumanrc" file (or "juman.ini"?) has to be created.
+#3 The dictionary resource files (*.mat, *.tab, *.dat, *.pat) should be generated.
+
+Dummy projects that execute these should be added to the Visual Studio solution. Just windows batch files, I guess.
+
+** #1 ********
+
+JUMAN.connect is created by preprocessing JUMAN.connect.c and commenting-out "(#pragma .." lines. In the unix environment this is done with the command:
+
+gcc -E -P JUMAN.connect.c | sed "s/\(\#pragma\)/\;\1/" > JUMAN.connect
+
+** #2 ********
+
+For a MS Visual Studio build "jumanrc" needs to be copied to the /dic directory. In the unix environment it is parsed so that the first two value sections for the grammar and dictionary files locations below have the "@pkgdatadir@" variable replaced by the absolute path to the top install directory.
+
+(文法ファイル
+	@pkgdatadir@/dic
+)
+
+(辞書ファイル
+	@pkgdatadir@/dic
+)
+
+(品詞コスト
+	((*) 		 		10)
+	((特殊 *)			100)
+	((動詞)				100)
+....
+...
+..
+..
+
+It seems that in the case of the executable being created by MS Visual Studio these @pkgdatadir@ values are simply not used, so it's OK to simply copy jumanrc.in -> dic/jumanrc.
+
+** #3 ********
+
+#windows: ..\makemat\Release\makemat.exe
+
+#windows
+..\makeint\Release\makeint.exe Assert.dic
+..\makeint\Release\makeint.exe AuxV.dic
+..\makeint\Release\makeint.exe ContentW.dic
+..\makeint\Release\makeint.exe Demonstrative.dic
+..\makeint\Release\makeint.exe Noun.hukusi.dic
+..\makeint\Release\makeint.exe Noun.keishiki.dic
+..\makeint\Release\makeint.exe Noun.koyuu.dic
+..\makeint\Release\makeint.exe Noun.suusi.dic
+..\makeint\Release\makeint.exe Postp.dic
+..\makeint\Release\makeint.exe Prefix.dic
+..\makeint\Release\makeint.exe Rengo.dic
+..\makeint\Release\makeint.exe Special.dic
+..\makeint\Release\makeint.exe Suffix.dic
+
+copy /B Assert.int + AuxV.int + ContentW.int + Demonstrative.int + Noun.hukusi.int + Noun.keishiki.int + Noun.koyuu.int + Noun.suusi.int + Postp.int + Prefix.int + Rengo.int + Special.int + Suffix.int  jumandic.txt
+
+../makepat/dicsort jumandic.txt > jumandic.dat
+
+rm -f jumandic.txt
+../makepat/makepat
