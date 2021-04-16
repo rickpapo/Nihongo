@@ -16,4 +16,8 @@ I would have gone further with the program, but realized that I really needed to
 to read Japanese for myself, and so began working on various translation projects.  But I
 continue to use this applet to do the grunt work of dictionary lookups.
 
+To build this project, you will need Microsoft Visual Studio 2019 (Community Edition or 
+better), and you will need to install the Wix Toolset, version 3.14 or later, along with 
+the appropriate Visual Studio extension.
+
 --Rick Papo
