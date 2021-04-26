@@ -25,4 +25,6 @@ version of the helper which is now mainly used to create the dictionary file.  T
 is an MFC dialog applet used to interactively perform dictionary lookups.  Note that the 
 Analyzer and Parser2 projects were never completed.
 
+System requirements for running: Windows X64, 16Gb RAM or more.
+
 --Rick Papo
