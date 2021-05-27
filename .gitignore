@@ -363,12 +363,10 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # Private Files
-*.dat
 *.dmp
 *.dpmrg
 *.htm
 *.zip
 *.txt
-jdict/edict
 jdict/edict.jdx
 jdict/edict_doc.html
