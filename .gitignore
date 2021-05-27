@@ -368,5 +368,6 @@ FodyWeavers.xsd
 *.htm
 *.zip
 *.txt
+Dictionary.dat
 jdict/edict.jdx
 jdict/edict_doc.html
