@@ -106,10 +106,10 @@ BOOL DlgResizeHelper::Fix(EHFix a_hFix, EVFix a_vFix) {
 }
 
 UINT DlgResizeHelper::Fix(LPCTSTR a_pszClassName, EHFix a_hFix, EVFix a_vFix) {
-	wchar_t pszCN[200];  // ToDo: size?
+	wchar_t pszCN[200];
 	UINT cnt = 0;
 	for (auto& Control : m_ctrls) {
-		::GetClassName(Control.m_hCtrl, pszCN, sizeof(pszCN));
+		::GetClassNameW(Control.m_hCtrl, pszCN, _countof(pszCN));
 		if (wcscmp(pszCN, a_pszClassName) == 0) {
 			cnt++;
 			Control.m_hFix = a_hFix;
