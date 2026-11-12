@@ -184,6 +184,7 @@ public:
 		memcpy ( Conjugations, Other.Conjugations, sizeof(Conjugations) ) ;
 		Symbols.Add ( Symbol ) ;
 		Sounds.Add ( Sound ) ;
+		return (*this);
 	} /* endmethod */
 	bool operator< ( const _SymbolSound &obj ) const {
 		int Result = Symbol.compare ( obj.Symbol ) ;
