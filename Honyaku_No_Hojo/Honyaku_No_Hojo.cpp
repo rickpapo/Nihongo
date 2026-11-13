@@ -57,7 +57,7 @@ BOOL CHonyaku_No_HojoApp::InitInstance()
 	// Change the registry key under which our settings are stored
 	// TODO: You should modify this string to be something appropriate
 	// such as the name of your company or organization
-	SetRegistryKey ( L"Local AppWizard-Generated Applications" ) ;
+	SetRegistryKey(L"Local AppWizard-Generated Applications");
 
 	CHonyaku_No_HojoDlg dlg;
 	m_pMainWnd = &dlg;
